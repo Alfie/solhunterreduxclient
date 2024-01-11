@@ -3,7 +3,7 @@ import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js'
 import {solHunterprogramId, solHunterprogramInterface, commitmentLevel,} from "../pages/api/utils/constants"
 import { AnchorWallet } from '@solana/wallet-adapter-react';
 import { Program, AnchorProvider, web3 } from "@coral-xyz/anchor";
-import {SolHunter} from "../../../target/types/sol_hunter"
+import {SolHunter} from "../sol_hunter"
 
 interface GameBoardStore extends State {
     gameBoard: any;
