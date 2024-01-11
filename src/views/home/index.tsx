@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 // Wallet
-import { useWallet, useConnection } from '@solana/wallet-adapter-react';
+import { useWallet,useAnchorWallet, useConnection } from '@solana/wallet-adapter-react';
 
 // Components
 import { RequestAirdrop } from '../../components/RequestAirdrop';
@@ -16,7 +16,7 @@ import useUserSOLBalanceStore from '../../stores/useUserSOLBalanceStore';
 import { SpawnPlayer } from 'components/SpawnPlayer';
 
 export const HomeView: FC = ({ }) => {
-  const wallet = useWallet();
+  const wallet = useAnchorWallet();
   const { connection } = useConnection();
 
   const balance = useUserSOLBalanceStore((s) => s.balance)

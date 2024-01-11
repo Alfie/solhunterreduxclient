@@ -40,6 +40,7 @@ export default async function movePlayer(wallet: AnchorWallet, direction: number
         const GAMESIGNER = web3.Keypair.fromSecretKey(GAMEAUTHORITYSECRETKEY);
 
         /* interact with the program via rpc */
+        //TODO: pass wallet down here
         const ixn: TransactionInstruction = await program.methods.movePlayer(direction).accounts({
             player: wallet.publicKey,
             chestVault: chestVault, //todo: change this to correct address
