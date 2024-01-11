@@ -16,7 +16,7 @@ import useUserSOLBalanceStore from '../../stores/useUserSOLBalanceStore';
 import { SpawnPlayer } from 'components/SpawnPlayer';
 
 export const HomeView: FC = ({ }) => {
-  const wallet = useAnchorWallet();
+  const wallet = useWallet();
   const { connection } = useConnection();
 
   const balance = useUserSOLBalanceStore((s) => s.balance)
