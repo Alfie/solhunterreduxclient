@@ -6,13 +6,10 @@ import useUserSOLBalanceStore from '../stores/useUserSOLBalanceStore';
 import useIsMounted from "../pages/api/utils/useIsMounted";
 import spawnPlayer from "../pages/api/spawnPlayer";
 
-import * as anchor from "@coral-xyz/anchor";
-import { SolHunter } from "../../../target/types/sol_hunter";
-
 export const SpawnPlayer: FC = () => {
     const { connection } = useConnection();
     const {publicKey } = useWallet();
-    const wallet = useAnchorWallet()
+    const wallet = useAnchorWallet();
     //const mounted = useIsMounted();
     const { getUserSOLBalance } = useUserSOLBalanceStore();
     //const publicKey = wallet.publicKey;

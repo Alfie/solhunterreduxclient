@@ -8,6 +8,7 @@ import { useWallet, useConnection } from '@solana/wallet-adapter-react';
 // Components
 import { RequestAirdrop } from '../../components/RequestAirdrop';
 import { Board } from 'components/Board';
+import { GamePad } from 'components/GamePad';
 import pkg from '../../../package.json';
 
 // Store
@@ -42,7 +43,7 @@ export const HomeView: FC = ({ }) => {
           <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500 to-indigo-500 rounded-lg blur opacity-40 animate-tilt"></div>
           <Board />
         </div>
-        <SpawnPlayer />
+        <SpawnPlayer /><GamePad />
         <div className="flex flex-col mt-2">
           <RequestAirdrop />
           <h4 className="md:w-full text-2xl text-slate-300 my-2">
@@ -54,6 +55,7 @@ export const HomeView: FC = ({ }) => {
               <div className='text-slate-600 ml-2'>
                 SOL
               </div>
+              
           </div>
           }
           </h4>

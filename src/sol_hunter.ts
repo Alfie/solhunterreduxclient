@@ -1,0 +1,437 @@
+export type SolHunter = {
+  "version": "0.1.0",
+  "name": "sol_hunter",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "signer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "newGameDataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "chestVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "spawnPlayer",
+      "accounts": [
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "chestVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "gameDataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "avatar",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "movePlayer",
+      "accounts": [
+        {
+          "name": "chestVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "gameDataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "player",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "direction",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "movePlayerV2",
+      "accounts": [
+        {
+          "name": "chestVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "gameDataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "player",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "direction",
+          "type": "u8"
+        },
+        {
+          "name": "blockBump",
+          "type": "u8"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "gameDataAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "board",
+            "type": {
+              "array": [
+                {
+                  "array": [
+                    {
+                      "defined": "Tile"
+                    },
+                    4
+                  ]
+                },
+                4
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "chestVaultAccount",
+      "type": {
+        "kind": "struct",
+        "fields": []
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "Tile",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "player",
+            "type": "publicKey"
+          },
+          {
+            "name": "state",
+            "type": "u8"
+          },
+          {
+            "name": "health",
+            "type": "u8"
+          },
+          {
+            "name": "collectReward",
+            "type": "u64"
+          },
+          {
+            "name": "avatar",
+            "type": "publicKey"
+          },
+          {
+            "name": "kills",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "TileOutOfBounds"
+    },
+    {
+      "code": 6001,
+      "name": "BoardIsFull"
+    },
+    {
+      "code": 6002,
+      "name": "PlayerAlreadyExists"
+    },
+    {
+      "code": 6003,
+      "name": "TriedToMovePlayerThatWasNotOnTheBoard"
+    },
+    {
+      "code": 6004,
+      "name": "WrongDirectionInput"
+    }
+  ]
+};
+
+export const IDL: SolHunter = {
+  "version": "0.1.0",
+  "name": "sol_hunter",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "signer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "newGameDataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "chestVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "spawnPlayer",
+      "accounts": [
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "chestVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "gameDataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "avatar",
+          "type": "publicKey"
+        }
+      ]
+    },
+    {
+      "name": "movePlayer",
+      "accounts": [
+        {
+          "name": "chestVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "gameDataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "player",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "direction",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "movePlayerV2",
+      "accounts": [
+        {
+          "name": "chestVault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "gameDataAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "player",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "direction",
+          "type": "u8"
+        },
+        {
+          "name": "blockBump",
+          "type": "u8"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "gameDataAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "board",
+            "type": {
+              "array": [
+                {
+                  "array": [
+                    {
+                      "defined": "Tile"
+                    },
+                    4
+                  ]
+                },
+                4
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "chestVaultAccount",
+      "type": {
+        "kind": "struct",
+        "fields": []
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "Tile",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "player",
+            "type": "publicKey"
+          },
+          {
+            "name": "state",
+            "type": "u8"
+          },
+          {
+            "name": "health",
+            "type": "u8"
+          },
+          {
+            "name": "collectReward",
+            "type": "u64"
+          },
+          {
+            "name": "avatar",
+            "type": "publicKey"
+          },
+          {
+            "name": "kills",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "TileOutOfBounds"
+    },
+    {
+      "code": 6001,
+      "name": "BoardIsFull"
+    },
+    {
+      "code": 6002,
+      "name": "PlayerAlreadyExists"
+    },
+    {
+      "code": 6003,
+      "name": "TriedToMovePlayerThatWasNotOnTheBoard"
+    },
+    {
+      "code": 6004,
+      "name": "WrongDirectionInput"
+    }
+  ]
+};

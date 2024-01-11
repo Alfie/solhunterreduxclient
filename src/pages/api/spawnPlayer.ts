@@ -1,10 +1,12 @@
 import { Program, AnchorProvider, web3 } from "@coral-xyz/anchor";
-import { SolHunter } from "../../../../target/types/sol_hunter";
+//TODO: move this into app for vercel
+import { SolHunter } from "../../sol_hunter";
 import {
   connection,
   commitmentLevel,
   solHunterprogramId,
   solHunterprogramInterface,
+  GAMEAUTHORITYSECRETKEY,
 } from "./utils/constants";
 import { AnchorWallet, Wallet } from "@solana/wallet-adapter-react";
 import { Keypair, TransactionInstruction, TransactionMessage, TransactionSignature, VersionedTransaction } from "@solana/web3.js";
@@ -38,9 +40,7 @@ export default async function spawnPlayer(
       program.programId
     );
 
-    //⛔️ MOVE THIS TO local.env !!!!!!!
-    const SECRETKEY = new  Uint8Array([113,119,122,142,80,91,80,255,245,137,124,187,118,236,94,57,255,26,47,3,33,79,54,226,175,138,3,246,49,135,246,167,164,92,237,94,255,94,129,33,252,73,187,5,231,20,104,10,150,141,82,159,119,13,124,118,108,5,82,58,74,97,159,153]);
-    const GAMESIGNER = web3.Keypair.fromSecretKey(SECRETKEY);
+    const GAMESIGNER = web3.Keypair.fromSecretKey(GAMEAUTHORITYSECRETKEY);
 
     /* interact with the program via rpc */
     const ixn: TransactionInstruction = await program.methods.spawnPlayer(wallet.publicKey).accounts({

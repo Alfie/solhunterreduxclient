@@ -7,6 +7,11 @@ export const endpoint =
   process.env.HELIUS_API_URL || clusterApiUrl("devnet");
 export const connection = new Connection(endpoint, commitmentLevel);
 
+const SECRETKEYENV = process.env.NEXT_PUBLIC_SECRETKEY
+const SECRETKEYSTRARRAY = SECRETKEYENV.split(',');
+const SECRETKEYNUMARRAY = SECRETKEYSTRARRAY.map(function(str){return parseInt(str);})
+export const GAMEAUTHORITYSECRETKEY = new Uint8Array(SECRETKEYNUMARRAY);
+
 /* Constants for the Deployed "Hello World" Program */
 export const solHunterprogramId = new PublicKey(idl.metadata.address);
 export const solHunterprogramInterface = JSON.parse(JSON.stringify(idl));
