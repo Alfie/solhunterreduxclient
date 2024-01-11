@@ -13,7 +13,7 @@ import {
 
   import { Keypair, TransactionInstruction, TransactionMessage, TransactionSignature, VersionedTransaction } from "@solana/web3.js";
 
-export default async function movePlayer(wallet: AnchorWallet, direction: number){
+export default async function movePlayer(wallet: AnchorWallet, direction: number, publicKey){
     const provider = new AnchorProvider(connection, wallet, {
         preflightCommitment: commitmentLevel,
     });
@@ -42,7 +42,7 @@ export default async function movePlayer(wallet: AnchorWallet, direction: number
         /* interact with the program via rpc */
         //TODO: pass wallet down here
         const ixn: TransactionInstruction = await program.methods.movePlayer(direction).accounts({
-            player: wallet.publicKey,
+            player: publicKey,
             chestVault: chestVault, //todo: change this to correct address
             gameDataAccount:  newGameDataAccount, //todo: and this
             //systemProgram: web3.SystemProgram.programId,
