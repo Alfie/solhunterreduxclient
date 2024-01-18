@@ -1,7 +1,11 @@
- 
-# Solana dApp Scaffold Next
+[try here](https://solhunterreduxclient.vercel.app/)
+KNOWN BUGS 🐛:
+- when you spawn move immediately after because the contract only spawns on the 0,0 space for now so if someone is occupying it others cannot join
+- you must refresh the page after spawning or moving to see the changes to the gameboard
+  
+# SolHunter NextJS Client
 
-The Solana dApp Scaffold repos are meant to house good starting scaffolds for ecosystem developers to get up and running quickly with a front end client UI that integrates several common features found in dApps with some basic usage examples. Wallet Integration. State management. Components examples. Notifications. Setup recommendations.
+This is just some changes to the Solana Dapp Scaffold to display a gameboard linked to the SolHunterRedux contract I deployed on devnet
 
 Responsive                     |  Desktop
 :-------------------------:|:-------------------------:
